@@ -1,23 +1,18 @@
 # Introduction
 
-This project is meant as a tool to explore different programming concepts.  The overall goal is to implement the game of
-Chess.  The project itself provides a very bare bones starting place.  Your task is to implement the following pieces
-of functionality, in order.  Various Conductors will show up at different stages of the project to talk through your
-work, pair program with you, and generally get to know your working style.  You are encouraged to ask questions
-throughout this process; please don't be shy.
+This repo is meant as a tool to explore different programming concepts by implementing the game of Chess.  The project itself provides a very bare bones starting place.  You are encouraged to ask questions throughout this process; please don't be shy.
 
-We assume you have at least passing knowledge of the game of chess, but no strategy is necessary for this project.  If you have
-little knowledge of chess, the Wikipedia article is an excellent reference:
+We assume you have at least passing knowledge of the game of chess, but no strategy is necessary for this project.  If you have little knowledge of chess, the Wikipedia article is an excellent reference:
 
 http://en.wikipedia.org/wiki/Chess
 
 
-# Getting Started
+# Getting Started With The App
 The initial state of the project provides very little; not much more than a basic structure for displaying an empty chess board via a CLI.  After you clone the directory, you can run the program via Maven:
 
 ```Shell
 $ mvn compile exec:java
-(( Maven cruft deleted for brevity }}
+{{ Maven cruft deleted for brevity }}
 Welcome to Chess!
 Type 'help' for a list of commands.
 > help
@@ -73,7 +68,6 @@ Goodbye!
 
 # Your Goals
 The overall goal here is to build the game of chess so that you can play it from the CLI.  Specific goals are listed below, but please _please_ ask any questions that come to mind.
-The sequence of the goals described here is intentional -- we've found it will be easier to accomplish them all if you stick to the plan.
 
 ## Goal #1: Modify the application to display a new game with pieces in place.
 Your first goal is place the pieces of a chess set on the board.  The types of pieces on a chess board are:
@@ -85,8 +79,7 @@ Your first goal is place the pieces of a chess set on the board.  The types of p
 - The Rook
 - The Pawn
 
-
-The initial version of the application just shows you an empty board.  Modify it so that it shows all the chess pieces in their correct starting positions.  The positions of the pieces should be:
+The initial version of the application just shows you an empty board.  The positions of the pieces at the beginning of the game should be:
 
     - White Pieces:
         - A1  Rook
@@ -117,7 +110,7 @@ After you are done, you should be able to see the pieces on the board when you u
 ## Goal #2:  Give a list of all the possible moves on the board
 Each piece can move in specific ways.  In the CLI, you may have noticed a command, 'list', which is not currently implemented.  Your goal in this step is to implement that command, showing all the moves that the current player can make.
 
-For the purposes of this exercise, you can specifically *ignore* these more complex movements:
+For the purposes of this exercise, you can specifically *ignore* these more complex moves:
 - Castling the King
 - En passant
 
@@ -125,7 +118,7 @@ For the purposes of this exercise, you can specifically *ignore* these more comp
 ## Goal #3:  Implement the ability for White and Black to make moves via the CLI
 When a new game is launched, the CLI prompts the White player to enter their first move.  However, the 'move' command is not currently implemented.  Your goal in this step is to implement the 'move' command.
 
-Note that, traditionally, chess has a variety of ways to indicate moves.  For simplicity of implementation, we recommend you implement a system that represents a move as "move {from} {to}".  So, in the CLI ...
+Note that, traditionally, chess has a variety of ways to indicate moves.  For this exercise, we recommend you implement a system that represents a move as "move {from} {to}".  So, in the CLI ...
 
 ```Shell
 White's Move
