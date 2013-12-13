@@ -24,10 +24,13 @@ can move.  The types of pieces on a chess board are:
 - The Rook
 - The Pawn
 
-Here is some functionality we would like for you to implement:
+The overall goal here is to build the game of chess so that you can play it from the CLI.  Specific goals are listed below.
 
 ## Goal #1: Modify the application to display a new game with pieces in place.
+The basic version of the application just shows you an empty board.  Modify it so that it shows all the chess pieces in their correct starting positions.
+
 The positions of the pieces should be:
+
     - White Pieces:
         - A1  Rook
         - B1  Knight
@@ -56,18 +59,16 @@ The positions of the pieces should be:
 ## Goal #2:  Give a list of all the possible moves on the board
 Each piece can move in specific ways.  For the purposes of this exercise, you can specifically *ignore* these more complex movements:
 - Castling the King
-- En passant  (Pawn in Passing)
+- En passant
 
-In the CLI, you should implement a command, "list", to show all the moves that the current player can make
+In the CLI, implement a command, "list", to show all the moves that the current player can make.
 
 ## Goal #3:  Implement the ability for White and Black to make moves via the CLI
-When a new game is launched, the CLI should prompt the White player to enter their first move.  It should then record that
-move, show the new state of the game, and prompt the Black player for their move.  Alternate accordingly.
+When a new game is launched, the CLI should prompt the White player to enter their first move.  It should then record that move, show the new state of the game, and prompt the Black player for their move.  Alternate accordingly.
 
 
 ## Goal #4:  Detect when the game is over via checkmate or draw
-The game should be able to detect when the game is over, either from a Checkmate or a Draw.  You can ignore the possibility
-of a game ending by repetitive moves, or by there not being enough pieces left on either side to complete the game.
+The game should be able to detect when the game is over, either from a Checkmate or a Draw.  You can ignore the possibility of a game ending by repetitive moves, or by there not being enough pieces left on either side to complete the game.
 
 
 
