@@ -6,17 +6,16 @@ of functionality, in order.  Various Conductors will show up at different stages
 work, pair program with you, and generally get to know your working style.  You are encouraged to ask questions
 throughout this process; please don't be shy.
 
-We assume you have at least passing knowledge of the game of chess, but no strategy will be necessary.  We won't ask you
-to build an AI to play against.  But a few pieces of knowledge will be helpful:
+We assume you have at least passing knowledge of the game of chess, but no strategy will be necessary.  If you have
+little knowledge of chess, the Wikipedia article is an excellent reference:
 
-  - Position on the board is typically given as Column/Row coordinates.  For instance, the white King starts at D1.
-  - A move of a given as a pair of coordinates.  For instance, the King moving forward one space would be expressed
-    as D1:D2.
+http://en.wikipedia.org/wiki/Chess
 
 
-# Stage One:  Chess Pieces
+# Core Module:  Model the Game of Chess
 The initial state of the project provides very little; not much more than a basic structure for displaying an empty
-chess board via a CLI.  Your first goal is to model all of the pieces of a chess set:
+chess board via a CLI.  Your first goal is place the pieces of a chess set on the board, and then model how they
+can move.  The types of pieces on a chess board are:
 
 - The King
 - The Queen
@@ -27,13 +26,14 @@ chess board via a CLI.  Your first goal is to model all of the pieces of a chess
 
 Here is some functionality we would like for you to implement:
 
-- Modify the application to display a new game with pieces in place.  The positions of the pieces should be:
+## Goal #1: Modify the application to display a new game with pieces in place.
+The positions of the pieces should be:
     - White Pieces:
         - A1  Rook
         - B1  Knight
         - C1  Bishop
-        - D1  King
-        - E1  Queen
+        - D1  Queen
+        - E1  King
         - F1  Bishop
         - G1  Knight
         - H1  Rook
@@ -53,34 +53,29 @@ Here is some functionality we would like for you to implement:
         All Pawns
 
 
-- Give a list of all the possible moves on the board
-Each piece can move in specific ways.  If you don't remember the pattern of each piece, Wikipedia is very helpful:
-http://en.wikipedia.org/wiki/Chess
+## Goal #2:  Give a list of all the possible moves on the board
+Each piece can move in specific ways.  For the purposes of this exercise, you can specifically *ignore* these more complex movements:
+- Castling the King
+- En passant  (Pawn in Passing)
+
+In the CLI, you should implement a command, "list", to show all the moves that the current player can make
+
+## Goal #3:  Implement the ability for White and Black to make moves via the CLI
+When a new game is launched, the CLI should prompt the White player to enter their first move.  It should then record that
+move, show the new state of the game, and prompt the Black player for their move.  Alternate accordingly.
+
+
+## Goal #4:  Detect when the game is over via checkmate or draw
+The game should be able to detect when the game is over, either from a Checkmate or a Draw.  You can ignore the possibility
+of a game ending by repetitive moves, or by there not being enough pieces left on either side to complete the game.
 
 
 
+# Congrats!
+If you've met the four goals above, congratulations!  This exercise has several follow-on modules that you may be asked
+to explore, including:
 
-
-# Stage Two:  The Game
-
-You should now have a visible, populated board.  So let's model the game itself.
-
-1.  Build a CLI-based user interface for taking in piece moves.  Specifically:
-  o White moves first
-  o Invalid move requests should be reported and ignored
-  o Valid moves should be accepted by showing the updated state of the game
-
-
-2.  Build a system that can
-
-
-
-# Stage Three:  Persistence
-
-
-
-# Stage Four:  API
-
-
-
-# Stage Five:  Web App
+    - Persistence Module:  How can you record the state of a game in a persistent data store?
+    - Strategy Module:  How can you build a basic computer player?
+    - API Module: How can you build a REST-ful API on top of this game to expose it to external clients?
+    - Web App Module:  How can you build a web client to this game?
