@@ -6,16 +6,77 @@ of functionality, in order.  Various Conductors will show up at different stages
 work, pair program with you, and generally get to know your working style.  You are encouraged to ask questions
 throughout this process; please don't be shy.
 
-We assume you have at least passing knowledge of the game of chess, but no strategy will be necessary.  If you have
+We assume you have at least passing knowledge of the game of chess, but no strategy is necessary for this project.  If you have
 little knowledge of chess, the Wikipedia article is an excellent reference:
 
 http://en.wikipedia.org/wiki/Chess
 
 
-# Core Module:  Model the Game of Chess
-The initial state of the project provides very little; not much more than a basic structure for displaying an empty
-chess board via a CLI.  Your first goal is place the pieces of a chess set on the board, and then model how they
-can move.  The types of pieces on a chess board are:
+# Getting Started
+The initial state of the project provides very little; not much more than a basic structure for displaying an empty chess board via a CLI.  After you clone the directory, you can run the program via Maven:
+
+```Shell
+$ mvn compile exec:java
+(( Maven cruft deleted for brevity }}
+Welcome to Chess!
+Type 'help' for a list of commands.
+> help
+Possible commands:
+    'help'                       Show this menu
+    'quit'                       Quit Chess
+    'new'                        Create a new game
+    'board'                      Show the chess board
+    'list'                       List all possible moves
+    'move <colrow> <colrow>'     Make a move
+> new
+It's currently White's Move
+    A   B   C   D   E   F   G   H
+  +---+---+---+---+---+---+---+---+
+  |   |   |   |   |   |   |   |   |
+8 |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |
+  +---+---+---+---+---+---+---+---+
+  |   |   |   |   |   |   |   |   |
+7 |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |
+  +---+---+---+---+---+---+---+---+
+  |   |   |   |   |   |   |   |   |
+6 |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |
+  +---+---+---+---+---+---+---+---+
+  |   |   |   |   |   |   |   |   |
+5 |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |
+  +---+---+---+---+---+---+---+---+
+  |   |   |   |   |   |   |   |   |
+4 |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |
+  +---+---+---+---+---+---+---+---+
+  |   |   |   |   |   |   |   |   |
+3 |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |
+  +---+---+---+---+---+---+---+---+
+  |   |   |   |   |   |   |   |   |
+2 |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |
+  +---+---+---+---+---+---+---+---+
+  |   |   |   |   |   |   |   |   |
+1 |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |
+  +---+---+---+---+---+---+---+---+
+    A   B   C   D   E   F   G   H
+
+White's Move
+> quit
+Goodbye!
+```
+
+# Your Goals
+The overall goal here is to build the game of chess so that you can play it from the CLI.  Specific goals are listed below, but please _please_ ask any questions that come to mind.
+The sequence of the goals described here is intentional -- we've found it will be easier to accomplish them all if you stick to the plan.
+
+## Goal #1: Modify the application to display a new game with pieces in place.
+Your first goal is place the pieces of a chess set on the board.  The types of pieces on a chess board are:
 
 - The King
 - The Queen
@@ -24,12 +85,8 @@ can move.  The types of pieces on a chess board are:
 - The Rook
 - The Pawn
 
-The overall goal here is to build the game of chess so that you can play it from the CLI.  Specific goals are listed below.
 
-## Goal #1: Modify the application to display a new game with pieces in place.
-The basic version of the application just shows you an empty board.  Modify it so that it shows all the chess pieces in their correct starting positions.
-
-The positions of the pieces should be:
+The initial version of the application just shows you an empty board.  Modify it so that it shows all the chess pieces in their correct starting positions.  The positions of the pieces should be:
 
     - White Pieces:
         - A1  Rook
@@ -55,17 +112,27 @@ The positions of the pieces should be:
         - A7, B7, C7, D7, E7, F7, G7, H7
         All Pawns
 
+After you are done, you should be able to see the pieces on the board when you use the 'new' command in the CLI.
 
 ## Goal #2:  Give a list of all the possible moves on the board
-Each piece can move in specific ways.  For the purposes of this exercise, you can specifically *ignore* these more complex movements:
+Each piece can move in specific ways.  In the CLI, you may have noticed a command, 'list', which is not currently implemented.  Your goal in this step is to implement that command, showing all the moves that the current player can make.
+
+For the purposes of this exercise, you can specifically *ignore* these more complex movements:
 - Castling the King
 - En passant
 
-In the CLI, implement a command, "list", to show all the moves that the current player can make.
 
 ## Goal #3:  Implement the ability for White and Black to make moves via the CLI
-When a new game is launched, the CLI should prompt the White player to enter their first move.  It should then record that move, show the new state of the game, and prompt the Black player for their move.  Alternate accordingly.
+When a new game is launched, the CLI prompts the White player to enter their first move.  However, the 'move' command is not currently implemented.  Your goal in this step is to implement the 'move' command.
 
+Note that, traditionally, chess has a variety of ways to indicate moves.  For simplicity of implementation, we recommend you implement a system that represents a move as "move {from} {to}".  So, in the CLI ...
+
+```Shell
+White's Move
+> move d2 d4
+```
+
+... would move the Queen's pawn forward by two.
 
 ## Goal #4:  Detect when the game is over via checkmate or draw
 The game should be able to detect when the game is over, either from a Checkmate or a Draw.  You can ignore the possibility of a game ending by repetitive moves, or by there not being enough pieces left on either side to complete the game.

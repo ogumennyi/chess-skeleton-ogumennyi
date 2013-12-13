@@ -14,6 +14,7 @@ public class CLI {
     public CLI(InputStream inputStream, PrintStream outStream) {
         this.inReader = new BufferedReader(new InputStreamReader(inputStream));
         this.outStream = outStream;
+        writeOutput("Welcome to Chess!");
     }
 
     private void writeOutput(String str) {
@@ -26,6 +27,7 @@ public class CLI {
      */
     private String getInput() {
         try {
+            this.outStream.print("> ");
             return inReader.readLine();
         } catch (IOException e) {
             throw new RuntimeException("Failed to read from input: ", e);
@@ -38,14 +40,13 @@ public class CLI {
 
     private void promptForInput() {
         if (isGameStarted()) {
-            writeOutput(chess.getGameState().getCurrentPlayer() + "'s Move: ");
-        } else {
-            writeOutput("Type 'help' for help.");
+            writeOutput(chess.getGameState().getCurrentPlayer() + "'s Move");
         }
     }
 
     private void startEventLoop() {
-        // this is our current very rudimentary event loop:
+        writeOutput("Type 'help' for a list of commands.");
+
         while (true) {
             promptForInput();
             String input = getInput();
@@ -64,11 +65,11 @@ public class CLI {
                 } else if (input.equals("board")) {
                     showBoard();
                 } else if (input.equals("list")) {
-                    writeOutput("Not Yet Implemented");
-                } else if (input.startsWith("move ")) {
-                    writeOutput("Not Yet Implemented");
+                    writeOutput("Sorry; 'list' is not yet implemented");
+                } else if (input.startsWith("move")) {
+                    writeOutput("Sorry; 'move' is not yet implemented");
                 } else {
-                    writeOutput("Sorry -- didn't understand that.  ");
+                    writeOutput("I didn't understand that.  Type 'help' for a list of commands.");
                 }
             }
         }    }
@@ -93,7 +94,6 @@ public class CLI {
 
     public static void main(String[] args) {
         CLI cli = new CLI(System.in, System.out);
-        cli.writeOutput("Welcome to Chess!");
         cli.startEventLoop();
     }
 }
