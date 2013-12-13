@@ -7,11 +7,21 @@ package chess;
 public class Board {
     private static final String NEWLINE = System.getProperty("line.separator");
 
+    private GameState state;
+
+    public Board(GameState state) {
+        this.state = state;
+    }
+
     /**
      * Display the board for the user(s)
      */
-    public String getBoard() {
+    public String asString() {
         StringBuilder builder = new StringBuilder();
+        builder.append("It's currently ")
+                .append(state.getCurrentPlayer())
+                .append("'s Move").append(NEWLINE);
+
         printColumnLabels(builder);
 
         for (int i = 8; i > 0; i--) {
