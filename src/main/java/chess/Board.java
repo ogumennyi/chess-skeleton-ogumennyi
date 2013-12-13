@@ -7,6 +7,11 @@ package chess;
 public class Board {
     private static final String NEWLINE = System.getProperty("line.separator");
 
+    public static final int MIN_ROW = 1;
+    public static final int MAX_ROW = 8;
+    public static final char MIN_COLUMN = 'a';
+    public static final char MAX_COLUMN = 'h';
+
     private GameState state;
 
     public Board(GameState state) {
@@ -24,7 +29,7 @@ public class Board {
 
         printColumnLabels(builder);
 
-        for (int i = 8; i > 0; i--) {
+        for (int i = MAX_ROW; i >= MIN_ROW; i--) {
             printSeparator(builder);
             printSquares(i, builder);
         }
@@ -48,6 +53,11 @@ public class Board {
     }
 
     private void printColumnLabels(StringBuilder builder) {
-        builder.append("    A   B   C   D   E   F   G   H").append(NEWLINE);
+        builder.append("  ");
+        for (char c = MIN_COLUMN; c <= MAX_COLUMN; c++) {
+            builder.append(" ").append(c).append(" ");
+        }
+
+        builder.append(NEWLINE);
     }
 }
