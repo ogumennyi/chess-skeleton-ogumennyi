@@ -23,7 +23,7 @@ public class Board {
      */
     public String asString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("It's currently ")
+        builder.append("   It's currently ")
                 .append(state.getCurrentPlayer())
                 .append("'s Move").append(NEWLINE);
 
@@ -43,8 +43,13 @@ public class Board {
 
     private void printSquares(int rowLabel, StringBuilder builder) {
         builder.append("  |   |   |   |   |   |   |   |   |").append(NEWLINE);
-        builder.append(rowLabel)
-               .append(" |   |   |   |   |   |   |   |   |").append(NEWLINE);
+
+        builder.append(rowLabel);
+        for (char c = MIN_COLUMN; c <= MAX_COLUMN; c++) {
+            builder.append(" |  ");
+        }
+        builder.append(" | ").append(rowLabel).append(NEWLINE);
+
         builder.append("  |   |   |   |   |   |   |   |   |").append(NEWLINE);
     }
 
@@ -53,9 +58,9 @@ public class Board {
     }
 
     private void printColumnLabels(StringBuilder builder) {
-        builder.append("  ");
+        builder.append("   ");
         for (char c = MIN_COLUMN; c <= MAX_COLUMN; c++) {
-            builder.append(" ").append(c).append(" ");
+            builder.append(" ").append(c).append("  ");
         }
 
         builder.append(NEWLINE);
