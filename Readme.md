@@ -12,7 +12,7 @@ The initial state of the project provides very little; not much more than a basi
 
 ```Shell
 $ mvn compile exec:java
-{{ Maven cruft deleted for brevity }}
+{{ Maven output deleted for brevity }}
 Welcome to Chess!
 Type 'help' for a list of commands.
 > help
@@ -24,42 +24,25 @@ Possible commands:
     'list'                       List all possible moves
     'move <colrow> <colrow>'     Make a move
 > new
-It's currently White's Move
-    A   B   C   D   E   F   G   H
+    a   b   c   d   e   f   g   h  
   +---+---+---+---+---+---+---+---+
-  |   |   |   |   |   |   |   |   |
-8 |   |   |   |   |   |   |   |   |
-  |   |   |   |   |   |   |   |   |
+8 |   |   |   |   |   |   |   |   | 8
   +---+---+---+---+---+---+---+---+
-  |   |   |   |   |   |   |   |   |
-7 |   |   |   |   |   |   |   |   |
-  |   |   |   |   |   |   |   |   |
+7 |   |   |   |   |   |   |   |   | 7
   +---+---+---+---+---+---+---+---+
-  |   |   |   |   |   |   |   |   |
-6 |   |   |   |   |   |   |   |   |
-  |   |   |   |   |   |   |   |   |
+6 |   |   |   |   |   |   |   |   | 6
   +---+---+---+---+---+---+---+---+
-  |   |   |   |   |   |   |   |   |
-5 |   |   |   |   |   |   |   |   |
-  |   |   |   |   |   |   |   |   |
+5 |   |   |   |   |   |   |   |   | 5
   +---+---+---+---+---+---+---+---+
-  |   |   |   |   |   |   |   |   |
-4 |   |   |   |   |   |   |   |   |
-  |   |   |   |   |   |   |   |   |
+4 |   |   |   |   |   |   |   |   | 4
   +---+---+---+---+---+---+---+---+
-  |   |   |   |   |   |   |   |   |
-3 |   |   |   |   |   |   |   |   |
-  |   |   |   |   |   |   |   |   |
+3 |   |   |   |   |   |   |   |   | 3
   +---+---+---+---+---+---+---+---+
-  |   |   |   |   |   |   |   |   |
-2 |   |   |   |   |   |   |   |   |
-  |   |   |   |   |   |   |   |   |
+2 |   |   |   |   |   |   |   |   | 2
   +---+---+---+---+---+---+---+---+
-  |   |   |   |   |   |   |   |   |
-1 |   |   |   |   |   |   |   |   |
-  |   |   |   |   |   |   |   |   |
+1 |   |   |   |   |   |   |   |   | 1
   +---+---+---+---+---+---+---+---+
-    A   B   C   D   E   F   G   H
+    a   b   c   d   e   f   g   h  
 
 White's Move
 > quit
@@ -67,7 +50,7 @@ Goodbye!
 ```
 
 # Your Goals
-The overall goal here is to build the game of chess so that you can play it from the CLI.  Specific goals are listed below, but please _please_ ask any questions that come to mind.
+The overall goal is to build the game of chess so that you can play it from the CLI against another person.  Specific goals are listed below, but please ask any questions that come to mind.
 
 ## Goal #1: Modify the application to display a new game with pieces in place.
 Your first goal is place the pieces of a chess set on the board.  The types of pieces on a chess board are:
@@ -133,10 +116,4 @@ The game should be able to detect when the game is over, either from a Checkmate
 
 
 # Congrats!
-If you've met the four goals above, congratulations!  This exercise has several follow-on modules that you may be asked
-to explore, including:
-
-    - Persistence Module:  How can you record the state of a game in a persistent data store?
-    - Strategy Module:  How can you build a basic computer player?
-    - API Module: How can you build a REST-ful API on top of this game to expose it to external clients?
-    - Web App Module:  How can you build a web client to this game?
+If you've met the four goals above, congratulations!  Please send us a Pull Request so we can review your work.
