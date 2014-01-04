@@ -6,10 +6,12 @@ import java.io.*;
  * This class provides the basic CLI interface to the Chess game.
  */
 public class CLI {
+    private static final String NEWLINE = System.getProperty("line.separator");
+
     private final BufferedReader inReader;
     private final PrintStream outStream;
 
-    private Chess chess;
+    private GameState gameState = null;
 
     public CLI(InputStream inputStream, PrintStream outStream) {
         this.inReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -17,6 +19,10 @@ public class CLI {
         writeOutput("Welcome to Chess!");
     }
 
+    /**
+     * Write the string to the output
+     * @param str The string to write
+     */
     private void writeOutput(String str) {
         this.outStream.println(str);
     }
@@ -35,29 +41,26 @@ public class CLI {
     }
 
     private boolean isGameStarted() {
-        return chess != null;
+        return gameState != null;
     }
 
-    private void promptForInput() {
-        if (isGameStarted()) {
-            writeOutput(chess.getGameState().getCurrentPlayer() + "'s Move");
-        }
-    }
 
-    private void startEventLoop() {
+    void startEventLoop() {
         writeOutput("Type 'help' for a list of commands.");
 
         while (true) {
-            promptForInput();
-            String input = getInput();
+            if (isGameStarted()) {
+                writeOutput(gameState.getCurrentPlayer() + "'s Move");
+            }
 
+            String input = getInput();
             if (input == null) {
-                break;
+                break; // No more input possible; this is the only way to exit the event loop
             } else if (input.length() > 0) {
                 if (input.equals("help")) {
                     showCommands();
                 } else if (input.equals("new")) {
-                    chess = new Chess();
+                    gameState = new GameState();
                     showBoard();
                 } else if (input.equals("quit")) {
                     writeOutput("Goodbye!");
@@ -72,11 +75,12 @@ public class CLI {
                     writeOutput("I didn't understand that.  Type 'help' for a list of commands.");
                 }
             }
-        }    }
+        }
+    }
 
     private void showBoard() {
         if (isGameStarted()) {
-            writeOutput(chess.getBoard().asString());
+            writeOutput(getBoardAsString());
         } else {
             writeOutput("No game in progress.  Use 'new' to create a new game.");
         }
@@ -90,6 +94,46 @@ public class CLI {
         writeOutput("    'board'                      Show the chess board");
         writeOutput("    'list'                       List all possible moves");
         writeOutput("    'move <colrow> <colrow>'     Make a move");
+    }
+
+    /**
+     * Display the board for the user(s)
+     */
+    public String getBoardAsString() {
+        StringBuilder builder = new StringBuilder();
+
+        printColumnLabels(builder);
+        for (int i = GameState.MAX_ROW; i >= GameState.MIN_ROW; i--) {
+            printSeparator(builder);
+            printSquares(i, builder);
+        }
+
+        printSeparator(builder);
+        printColumnLabels(builder);
+
+        return builder.toString();
+    }
+
+
+    private void printSquares(int rowLabel, StringBuilder builder) {
+        builder.append(rowLabel);
+        for (char c = GameState.MIN_COLUMN; c <= GameState.MAX_COLUMN; c++) {
+            builder.append(" |  ");
+        }
+        builder.append(" | ").append(rowLabel).append(NEWLINE);
+    }
+
+    private void printSeparator(StringBuilder builder) {
+        builder.append("  +---+---+---+---+---+---+---+---+").append(NEWLINE);
+    }
+
+    private void printColumnLabels(StringBuilder builder) {
+        builder.append("   ");
+        for (char c = GameState.MIN_COLUMN; c <= GameState.MAX_COLUMN; c++) {
+            builder.append(" ").append(c).append("  ");
+        }
+
+        builder.append(NEWLINE);
     }
 
     public static void main(String[] args) {

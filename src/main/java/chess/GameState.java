@@ -7,6 +7,11 @@ package chess;
  */
 public class GameState {
 
+    public static final int MIN_ROW = 1;
+    public static final int MAX_ROW = 8;
+    public static final char MIN_COLUMN = 'a';
+    public static final char MAX_COLUMN = 'h';
+
     private Player currentPlayer = Player.White;
 
     /**
