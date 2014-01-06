@@ -51,29 +51,27 @@ public class CLI {
             String input = getInput();
             if (input == null) {
                 break; // No more input possible; this is the only way to exit the event loop
-            } else if (input.length() > 0) {
-                if (input.equals("help")) {
-                    showCommands();
-                } else if (input.equals("new")) {
-                    gameState = new GameState();
-                } else if (input.equals("quit")) {
-                    writeOutput("Goodbye!");
-                    System.exit(0);
-                } else if (input.equals("board")) {
-                    showBoard();
-                } else if (input.equals("list")) {
-                    writeOutput("Sorry; 'list' is not yet implemented");
-                } else if (input.startsWith("move")) {
-                    writeOutput("Sorry; 'move' is not yet implemented");
-                } else {
-                    writeOutput("I didn't understand that.  Type 'help' for a list of commands.");
-                }
+            } else if (input.equals("help")) {
+                showCommands();
+            } else if (input.equals("new")) {
+                gameState = new GameState();
+            } else if (input.equals("board")) {
+                writeOutput("Current Board State:");
+            } else if (input.equals("quit")) {
+                writeOutput("Goodbye!");
+                System.exit(0);
+            } else if (input.equals("list")) {
+                writeOutput("Sorry; 'list' is not yet implemented");
+            } else if (input.startsWith("move")) {
+                writeOutput("Sorry; 'move' is not yet implemented");
+            } else {
+                writeOutput("I didn't understand that.  Type 'help' for a list of commands.");
             }
         }
     }
 
     private void showBoard() {
-        writeOutput("Current Game: ");
+
         writeOutput(getBoardAsString());
     }
 
