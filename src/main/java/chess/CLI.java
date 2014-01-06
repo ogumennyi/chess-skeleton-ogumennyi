@@ -47,11 +47,10 @@ public class CLI {
 
     void startEventLoop() {
         writeOutput("Type 'help' for a list of commands.");
+        doNewGame();
 
         while (true) {
-            if (isGameStarted()) {
-                writeOutput(gameState.getCurrentPlayer() + "'s Move");
-            }
+            writeOutput(gameState.getCurrentPlayer() + "'s Move");
 
             String input = getInput();
             if (input == null) {
@@ -60,8 +59,7 @@ public class CLI {
                 if (input.equals("help")) {
                     showCommands();
                 } else if (input.equals("new")) {
-                    gameState = new GameState();
-                    showBoard();
+                    doNewGame();
                 } else if (input.equals("quit")) {
                     writeOutput("Goodbye!");
                     System.exit(0);
@@ -76,6 +74,11 @@ public class CLI {
                 }
             }
         }
+    }
+
+    private void doNewGame() {
+        gameState = new GameState();
+        showBoard();
     }
 
     private void showBoard() {

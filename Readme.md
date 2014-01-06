@@ -15,16 +15,7 @@ $ mvn compile exec:java
 {{ Maven output deleted for brevity }}
 Welcome to Chess!
 Type 'help' for a list of commands.
-> help
-Possible commands:
-    'help'                       Show this menu
-    'quit'                       Quit Chess
-    'new'                        Create a new game
-    'board'                      Show the chess board
-    'list'                       List all possible moves
-    'move <colrow> <colrow>'     Make a move
-> new
-    a   b   c   d   e   f   g   h  
+    a   b   c   d   e   f   g   h
   +---+---+---+---+---+---+---+---+
 8 |   |   |   |   |   |   |   |   | 8
   +---+---+---+---+---+---+---+---+
@@ -42,8 +33,17 @@ Possible commands:
   +---+---+---+---+---+---+---+---+
 1 |   |   |   |   |   |   |   |   | 1
   +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h  
+    a   b   c   d   e   f   g   h
 
+White's Move
+> help
+Possible commands:
+    'help'                       Show this menu
+    'quit'                       Quit Chess
+    'new'                        Create a new game
+    'board'                      Show the chess board
+    'list'                       List all possible moves
+    'move <colrow> <colrow>'     Make a move
 White's Move
 > quit
 Goodbye!

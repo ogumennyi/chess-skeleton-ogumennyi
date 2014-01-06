@@ -48,7 +48,7 @@ public class CLITest {
         runCliWithInput("help");
 
         List<String> output = captureOutput();
-        assertEquals("Should have had 9 lines of output", 9, output.size());
+        assertEquals("Should have 12 output calls", 12, output.size());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class CLITest {
         runCliWithInput("new");
         List<String> output = captureOutput();
 
-        assertEquals("Should have had 4 calls to print strings", 4, output.size());
+        assertEquals("Should have had 4 calls to print strings", 6, output.size());
         assertEquals("It should have printed the board", 700, output.get(2).length());
     }
 
@@ -65,7 +65,7 @@ public class CLITest {
         runCliWithInput("new", "board");
         List<String> output = captureOutput();
 
-        assertEquals("Should have had 6 output calls", 6, output.size());
+        assertEquals("Should have had 6 output calls", 8, output.size());
         assertEquals("It should have printed the board twice", output.get(2), output.get(4));
     }
 
