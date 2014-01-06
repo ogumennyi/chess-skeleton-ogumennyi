@@ -15,6 +15,7 @@ $ mvn compile exec:java
 {{ Maven output deleted for brevity }}
 Welcome to Chess!
 Type 'help' for a list of commands.
+Current Game:
     a   b   c   d   e   f   g   h
   +---+---+---+---+---+---+---+---+
 8 |   |   |   |   |   |   |   |   | 8
@@ -44,7 +45,7 @@ Possible commands:
     'board'                      Show the chess board
     'list'                       List all possible moves
     'move <colrow> <colrow>'     Make a move
-White's Move
+{{ Board redisplayed }}
 > quit
 Goodbye!
 ```

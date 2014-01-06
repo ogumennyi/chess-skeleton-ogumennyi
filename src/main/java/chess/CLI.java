@@ -40,16 +40,12 @@ public class CLI {
         }
     }
 
-    private boolean isGameStarted() {
-        return gameState != null;
-    }
-
-
     void startEventLoop() {
         writeOutput("Type 'help' for a list of commands.");
-        doNewGame();
+        gameState = new GameState();
 
         while (true) {
+            showBoard();
             writeOutput(gameState.getCurrentPlayer() + "'s Move");
 
             String input = getInput();
@@ -59,7 +55,7 @@ public class CLI {
                 if (input.equals("help")) {
                     showCommands();
                 } else if (input.equals("new")) {
-                    doNewGame();
+                    gameState = new GameState();
                 } else if (input.equals("quit")) {
                     writeOutput("Goodbye!");
                     System.exit(0);
@@ -76,17 +72,9 @@ public class CLI {
         }
     }
 
-    private void doNewGame() {
-        gameState = new GameState();
-        showBoard();
-    }
-
     private void showBoard() {
-        if (isGameStarted()) {
-            writeOutput(getBoardAsString());
-        } else {
-            writeOutput("No game in progress.  Use 'new' to create a new game.");
-        }
+        writeOutput("Current Game: ");
+        writeOutput(getBoardAsString());
     }
 
     private void showCommands() {

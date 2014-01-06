@@ -48,7 +48,7 @@ public class CLITest {
         runCliWithInput("help");
 
         List<String> output = captureOutput();
-        assertEquals("Should have 12 output calls", 12, output.size());
+        assertEquals("Should have 15 output calls", 15, output.size());
     }
 
     @Test
@@ -56,8 +56,8 @@ public class CLITest {
         runCliWithInput("new");
         List<String> output = captureOutput();
 
-        assertEquals("Should have had 4 calls to print strings", 6, output.size());
-        assertEquals("It should have printed the board", 700, output.get(2).length());
+        assertEquals("Should have had 8 calls to print strings", 8, output.size());
+        assertEquals("It should have printed the board", 700, output.get(3).length());
     }
 
     @Test
@@ -65,8 +65,8 @@ public class CLITest {
         runCliWithInput("new", "board");
         List<String> output = captureOutput();
 
-        assertEquals("Should have had 6 output calls", 8, output.size());
-        assertEquals("It should have printed the board twice", output.get(2), output.get(4));
+        assertEquals("Should have had 13 output calls", 13, output.size());
+        assertEquals("It should have printed the board three times", output.get(3), output.get(6));
     }
 
     private List<String> captureOutput() {
