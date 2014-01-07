@@ -96,8 +96,8 @@ Each piece can move in specific ways.  In the CLI, you may have noticed a comman
 
 For the purposes of this exercise, you can specifically *ignore* these more complex moves:
 - Castling the King
-- En passant
-
+- Pawn En passant
+- Pawn Promotion
 
 ## Goal #3:  Implement the ability for White and Black to make moves via the CLI
 When a new game is launched, the CLI prompts the White player to enter their first move.  However, the 'move' command is not currently implemented.  Your goal in this step is to implement the 'move' command.
