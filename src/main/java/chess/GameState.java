@@ -66,9 +66,7 @@ public class GameState {
     		int j=1;
 			for (char c = GameState.MIN_COLUMN; c <= GameState.MAX_COLUMN; c++, j++) {
 				if(board[i-1][j-1]!=null && board[i-1][j-1].getColor().equals(currentPlayer)){
-					if(i==1 && j==1) board[i-1][j-1].getMoves(i-1, c, board);
-					//moves.addAll(board[i-1][j-1].getMoves(i-1, c, board));
-					
+					moves.addAll(board[i-1][j-1].getMoves(i-1, c, board));
 				}
 			}
     	}
