@@ -2,6 +2,8 @@ package chess;
 
 import java.io.*;
 
+import figures.Figure;
+
 /**
  * This class provides the basic CLI interface to the Chess game.
  */
@@ -43,11 +45,12 @@ public class CLI {
     void startEventLoop() {
         writeOutput("Type 'help' for a list of commands.");
         gameState = new GameState();
+        gameState.initBoard();
 
         while (true) {
             showBoard();
             writeOutput(gameState.getCurrentPlayer() + "'s Move");
-
+            
             String input = getInput();
             if (input == null) {
                 break; // No more input possible; this is the only way to exit the event loop
@@ -71,7 +74,6 @@ public class CLI {
     }
 
     private void showBoard() {
-
         writeOutput(getBoardAsString());
     }
 
@@ -103,11 +105,13 @@ public class CLI {
         return builder.toString();
     }
 
-
     private void printSquares(int rowLabel, StringBuilder builder) {
         builder.append(rowLabel);
+        Figure[][] board = gameState.getBoard();
         for (char c = GameState.MIN_COLUMN; c <= GameState.MAX_COLUMN; c++) {
-            builder.append(" |  ");
+        	Figure f = board[rowLabel-1][c-GameState.MIN_COLUMN];
+        	char title = (f!=null)?f.getTitle():' ';
+            builder.append(" | "+title);
         }
         builder.append(" | ").append(rowLabel).append(NEWLINE);
     }
