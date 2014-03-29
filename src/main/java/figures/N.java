@@ -15,4 +15,10 @@ public class N extends Figure {
 		return (getColor()==Player.Black)?'N':'n';
 	}
 
+	@Override
+	public ArrayList<String> getMoves(int posV, char posH, Figure[][] board) {
+		ArrayList<String> moves = new ArrayList<String>();
+		return moves;
+	}
+	
 }

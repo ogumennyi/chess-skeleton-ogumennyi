@@ -49,7 +49,7 @@ public class CLI {
 
         while (true) {
             showBoard();
-            writeOutput(gameState.getCurrentPlayer() + "'s Move");
+            writeMoves();
             
             String input = getInput();
             if (input == null) {
@@ -71,6 +71,13 @@ public class CLI {
                 writeOutput("I didn't understand that.  Type 'help' for a list of commands.");
             }
         }
+    }
+    
+    private void writeMoves(){
+    	writeOutput(gameState.getCurrentPlayer() + "'s Move");
+    	for(String move : gameState.getMoves()){
+    		writeOutput(move);
+    	}
     }
 
     private void showBoard() {

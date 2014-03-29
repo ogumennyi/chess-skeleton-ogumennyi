@@ -33,7 +33,6 @@ public class GameState {
     	{null, null, null, null, null, null, null, null},
     	{new P(Player.Black), new P(Player.Black), new P(Player.Black), new P(Player.Black), new P(Player.Black), new P(Player.Black), new P(Player.Black), new P(Player.Black)},
     	{new R(Player.Black), new N(Player.Black), new B(Player.Black), new Q(Player.Black), new K(Player.Black), new B(Player.Black), new N(Player.Black), new R(Player.Black)}
-    	
     };
 
     /**
@@ -46,6 +45,9 @@ public class GameState {
         return currentPlayer;
     }
     
+    /**
+     * Performs board initialization with predefined figures position
+     */
     public void initBoard(){
     	board = INIT_BOARD;
     }
@@ -54,6 +56,31 @@ public class GameState {
 		return board;
 	}
     
+    /**
+     * Returns the list of available moves for the current player
+     * @return The list of available moves
+     */
+    public ArrayList<String> getMoves(){
+    	ArrayList<String> moves = new ArrayList<String>();
+    	for (int i = GameState.MAX_ROW; i >= GameState.MIN_ROW; i--) {
+    		int j=1;
+			for (char c = GameState.MIN_COLUMN; c <= GameState.MAX_COLUMN; c++, j++) {
+				if(board[i-1][j-1]!=null && board[i-1][j-1].getColor().equals(currentPlayer)){
+					if(i==1 && j==1) board[i-1][j-1].getMoves(i-1, c, board);
+					//moves.addAll(board[i-1][j-1].getMoves(i-1, c, board));
+					
+				}
+			}
+    	}
+    	return moves;
+    }
+    
+    /**
+     * Check, if a position is on the board
+     * @param posV - vertical position (1-8)
+     * @param posH - horizontal position (a-h)
+     * @return Returns "true", if position is on the board, "false" otherwise.
+     */
     public static boolean isInsideBoard(int posV, char posH){
     	return posV<=MAX_ROW && posV>=MIN_ROW && posH<=MAX_COLUMN && posH>=MIN_COLUMN;
     }
